@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class DatabaseConnection {
 
@@ -44,7 +46,62 @@ public class DatabaseConnection {
             }
         }
     }
-    public static void saveScore(double tempoCorrido) {
+
+    public static int findOrCreatePlayer(String playerName) {
+
+        String selectSql = "SELECT id_jogador FROM tbl_jogador WHERE nome = ?";
+        String insertSql = "INSERT INTO tbl_jogador (nome) VALUES (?)";
+
+        // Usamos um try-with-resources para a conexão (fecha automaticamente)
+        try (Connection conn = getConnection()) {
+
+            if (conn == null) return -1;
+
+            // --- 1. Tenta Encontrar o Jogador ---
+            // (try-with-resources para o PreparedStatement e ResultSet)
+            try (PreparedStatement pstmtSelect = conn.prepareStatement(selectSql)) {
+                pstmtSelect.setString(1, playerName);
+
+                try (ResultSet rs = pstmtSelect.executeQuery()) {
+                    if (rs.next()) {
+                        // --- Jogador ENCONTRADO ---
+                        int playerID = rs.getInt("id_jogador");
+                        System.out.println("Jogador '" + playerName + "' encontrado com ID: " + playerID);
+                        return playerID; // Retorna o ID existente
+                    }
+                }
+            }
+
+            // --- 2. Jogador NÃO Encontrado, crie um novo ---
+            System.out.println("Jogador '" + playerName + "' não encontrado. Criando novo...");
+
+            // (try-with-resources para o PreparedStatement de inserção)
+            try (PreparedStatement pstmtInsert = conn.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS)) {
+                pstmtInsert.setString(1, playerName);
+                int affectedRows = pstmtInsert.executeUpdate();
+
+                if (affectedRows > 0) {
+                    try (ResultSet genKeys = pstmtInsert.getGeneratedKeys()) {
+                        if (genKeys.next()) {
+                            int playerID = genKeys.getInt(1);
+                            System.out.println("Jogador '" + playerName + "' criado com ID: " + playerID);
+                            return playerID; // Retorna o NOVO ID
+                        }
+                    }
+                }
+            }
+
+            // Se algo falhou na inserção
+            return -1;
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar ou criar jogador:");
+            e.printStackTrace();
+            return -1; // Retorna -1 em caso de erro
+        }
+    }
+
+    public static void saveScore(int playerID, double tempoCorrido) {
         String sql = "INSERT INTO tbl_pontuacao (id_jogador, tempo_corrido) VALUES (?, ?)";
 
         try (Connection conn = getConnection();
@@ -55,13 +112,13 @@ public class DatabaseConnection {
                 return;
             }
 
-            // 2. Definir os parâmetros
-            pstmt.setInt(1, 1); // Define id_jogador como 1 (ou qualquer ID de jogador que você queira)
-            pstmt.setDouble(2, tempoCorrido); // Define tempo_corrido
+            // Define os parâmetros com os valores corretos
+            pstmt.setInt(1, playerID);
+            pstmt.setDouble(2, tempoCorrido);
 
             pstmt.executeUpdate();
 
-            System.out.printf("Pontuação salva no DB! Tempo: %.2f segundos%n", tempoCorrido);
+            System.out.printf("Pontuação salva para ID %d! Tempo: %.2f segundos%n", playerID, tempoCorrido);
 
         } catch (SQLException e) {
             System.err.println("Erro ao salvar pontuação:");

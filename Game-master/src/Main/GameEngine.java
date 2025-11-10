@@ -27,32 +27,31 @@ public class GameEngine extends Canvas implements Runnable {
     private volatile boolean running = false;
 
     //Controle FPS
-
     public static final int FPS = 60;
 
     //Intervalo de tempo para cada atualização em segundos.
     public static final float SECONDS_PER_UPDATE = 1.0f / FPS;
 
-    public GameEngine() {
+    private int playerID;
 
-        gamePanel = new GamePanel();
-        player = new Player(this, gamePanel);
-        keyInputs = new KeyInputs();
+    public GameEngine(GamePanel gamePanel, int playerID) {
+        this.gamePanel = gamePanel;
+        this.playerID = playerID; // Armazena o ID do jogador
 
+        // Inicializa os componentes do jogo
+        this.player = new Player(this, gamePanel);
+        this.keyInputs = new KeyInputs();
+
+        // Configura os links
         gamePanel.setPlayer(player);
         player.setKeyInputs(keyInputs);
 
-        gameWindow = new GameWindow(gamePanel, this);
-
+        // Configura o input no painel
         gamePanel.addKeyListener(keyInputs);
         gamePanel.setFocusable(true);
-        gamePanel.requestFocusInWindow();
 
-        gameStartTime = System.nanoTime(); // Marca o tempo exato que o jogo começou - MARCOS
-        start();
-
-        gamePanel.requestFocus();
-        start();
+        // Marca o tempo de início
+        gameStartTime = System.nanoTime();
     }
 
     protected void updatePlayer() {
@@ -79,7 +78,7 @@ public class GameEngine extends Canvas implements Runnable {
     public synchronized void stop() {
         if (!running) return;
         running = false;
-        Util.DatabaseConnection.saveScore(elapsedGameTimeSeconds);
+        Util.DatabaseConnection.saveScore(this.playerID, elapsedGameTimeSeconds);
         try {
             gameThread.join();
         } catch (InterruptedException e) {
@@ -139,5 +138,9 @@ public class GameEngine extends Canvas implements Runnable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public Player getPlayer() {
+        return this.player;
     }
 }
