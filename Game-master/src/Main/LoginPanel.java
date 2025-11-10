@@ -18,7 +18,7 @@ public class LoginPanel extends JPanel {
 
         // Define o layout deste painel
         this.setLayout(new GridBagLayout());
-        this.setBackground(Color.BLACK); // Segue o padrão do jogo
+        this.setBackground(Color.PINK); // Segue o padrão do jogo
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10); // Espaçamento

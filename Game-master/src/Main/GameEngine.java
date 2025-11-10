@@ -143,4 +143,9 @@ public class GameEngine extends Canvas implements Runnable {
     public Player getPlayer() {
         return this.player;
     }
+
+    public double getElapsedGameTimeSeconds() {
+        return elapsedGameTimeSeconds;
+    }
+
 }
