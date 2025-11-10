@@ -9,9 +9,9 @@ import java.sql.Statement;
 
 public class DatabaseConnection {
 
-    private static final String DB_URL = "jdbc:mysql://26.190.228.198:3306/game_data"; // Altere "nome_do_seu_banco"
-    private static final String DB_USER = "root"; //
-    private static final String DB_PASS = "root";   //
+    private static final String DB_URL = "jdbc:mysql://26.190.228.198:3306/game_data"; // IP DO BANCO E NOME DO BANCO
+    private static final String DB_USER = "root"; //USUARIO DO BANCO
+    private static final String DB_PASS = "root";   //SENHA DO BANCO
 
     public static Connection getConnection() {
         try {

@@ -9,8 +9,8 @@ import java.awt.*;
 public class GamePanel extends JPanel {
 
     //Constantes para a largura e altura da tela.
-    public static final int LARGURA_TELA = 1280;
-    public static final int ALTURA_TELA = 720;
+    public static final int LARGURA_TELA = 1920;
+    public static final int ALTURA_TELA = 1080;
 
     Player player;
 
