@@ -1,5 +1,6 @@
 package Entity;
 
+import audio.AudioManager;
 import Input.KeyInputs;
 import Main.GameEngine;
 import Main.GamePanel;
@@ -77,15 +78,6 @@ public class Player {
 
     private void loadSprites() {
         try {
-            idleSpriteSheet = ImageIO.read(getClass().getResourceAsStream("/res/IDLE.png"));
-            if (idleSpriteSheet != null) {
-                idleTotalFrames = idleSpriteSheet.getWidth() / SPRITE_SIZE;
-                idleSprites = new BufferedImage[idleTotalFrames];
-                for (int i = 0; i < idleTotalFrames; i++) {
-                    idleSprites[i] = idleSpriteSheet.getSubimage(i * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE);
-                }
-            }
-
             runSpriteSheet = ImageIO.read(getClass().getResourceAsStream("/res/RUN.png"));
             if (runSpriteSheet != null) {
                 runTotalFrames = runSpriteSheet.getWidth() / SPRITE_SIZE;
@@ -209,7 +201,7 @@ public class Player {
         // --- NOVO: PULO MAIS ALTO ---
         // Se apertar Pulo e estiver no chão
         if (keyH.upPressed && (double)playerY == CHAO_Y) {
-            // Aumentado de -15.0 para -22.0
+            // Aumentado de -15.0 para -18.0
             velocidadeY = -18.0;
         }
     }
@@ -277,8 +269,21 @@ public class Player {
 
     public int getVelocidadeAtual() {
         // Retorna a velocidade que calculamos no passo anterior
-        // Se a variável for privada, certifique-se de que ela existe na classe
         return this.velocidadeAtual;
+    }
+
+    // ====================================================================
+    // LÓGICA DE MORTE E SOM
+    // ====================================================================
+
+    public void checkDeath() {
+        // 1. Para a música da fase imediatamente
+        AudioManager.stopBackgroundMusic();
+
+        // 2. Toca o som de morte
+        // Nota: Se você criou o método 'playSound' (sem loop) que sugeri antes, use ele aqui.
+        // Caso contrário, use playBackgroundMusic mesmo.
+        AudioManager.playGameOverMusic("death.wav");
     }
 
 }
