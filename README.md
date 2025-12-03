@@ -24,7 +24,7 @@ O projeto foca na lógica de pontuação progressiva e mecânicas de colisão em
 
 O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-* **Linguagem:** Java (JDK 24)
+* **Linguagem:** Java (JDK 25)
 * **Gerenciamento de Dependências:** Apache Maven
 * **Banco de Dados:** MySQL
 
@@ -36,6 +36,10 @@ Antes de começar, certifique-se de ter o seguinte ambiente configurado na sua m
 * **Git** instalado.
 * **MySQL Server** instalado e rodando.
 * Uma IDE Java de sua preferência (Recomendado: IntelliJ IDEA, Eclipse ou VS Code).
+
+## 💻 GAMEPLAY
+
+  https://www.youtube.com/watch?v=hkzoUeQ_W4E
 
 ## 💻 Como Rodar o Projeto
 
