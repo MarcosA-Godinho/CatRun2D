@@ -32,7 +32,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 Antes de começar, certifique-se de ter o seguinte ambiente configurado na sua máquina:
 
-* **Java JDK 24** instalado.
+* **Java JDK 25** instalado.
 * **Git** instalado.
 * **MySQL Server** instalado e rodando.
 * Uma IDE Java de sua preferência (Recomendado: IntelliJ IDEA, Eclipse ou VS Code).
