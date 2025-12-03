@@ -54,7 +54,7 @@ git clone https://github.com/AndersonJJR/Game.git
   <tr>
     <td align="center">
       <a href="https://www.linkedin.com/in/andersonchavesjunior/">
-        <img src="/images/1761921712659.jpg" width="100px;" alt="Foto do Membro 1"/><br>
+        <img src="https://media.licdn.com/dms/image/v2/D5603AQFaKLpTsMOtAg/profile-displayphoto-scale_400_400/B56ZiUyQ2AHcAg-/0/1754842862730?e=1765411200&v=beta&t=SbtRPPqJwjInpw56q1ntswlkFiXc8CSW_5ep_t3-CLU" width="100px;" alt="Foto do Membro 1"/><br>
         <sub>
           <b>Anderson Júnior</b>
         </sub>
@@ -79,26 +79,26 @@ git clone https://github.com/AndersonJJR/Game.git
   </tr>
   <tr>
     <td align="center">
-      <a href="URL_DO_LINKEDIN_OU_GITHUB_AQUI">
-        <img src="https://avatars.githubusercontent.com/u/00000000?v=4" width="100px;" alt="Foto do Membro 4"/><br>
+      <a href="(https://www.linkedin.com/in/yasmim-lessafelix-0b5b64302?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)">
+        <img src="https://media.licdn.com/dms/image/v2/D4D03AQHU92kewo8i8g/profile-displayphoto-scale_400_400/B4DZkSox.YIEAw-/0/1756954306151?e=1765411200&v=beta&t=ORThDFk-txMxrPVSno6DJvwrin4SFnBauo5JImkz5Cw" width="100px;" alt="Foto do Membro 4"/><br>
         <sub>
-          <b>Nome do Membro 4</b>
+          <b>Yasmim Camilly</b>
         </sub>
       </a>
     </td>
     <td align="center">
-      <a href="URL_DO_LINKEDIN_OU_GITHUB_AQUI">
-        <img src="https://avatars.githubusercontent.com/u/00000000?v=4" width="100px;" alt="Foto do Membro 5"/><br>
+      <a href="https://www.linkedin.com/in/ellencr2907/#:~:text=www.linkedin.com/in/ellencr2907">
+        <img src="https://media.licdn.com/dms/image/v2/D4D03AQGT8r7WmRwn0w/profile-displayphoto-shrink_400_400/B4DZcFZ9blGgAg-/0/1748142382569?e=1766016000&v=beta&t=xvWxlQwhRQkkXiyJEwLlSDXb6WXNJk_bzn-zQtv-E9k" width="100px;" alt="Foto do Membro 5"/><br>
         <sub>
-          <b>Nome do Membro 5</b>
+          <b>Ellen Cristine </b>
         </sub>
       </a>
     </td>
     <td align="center">
-      <a href="URL_DO_LINKEDIN_OU_GITHUB_AQUI">
-        <img src="https://avatars.githubusercontent.com/u/00000000?v=4" width="100px;" alt="Foto do Membro 6"/><br>
+      <a href="https://github.com/Teuu25255">
+        <img src="/images/Matheus.jpg" width="100px;" alt="Foto do Membro 6"/><br>
         <sub>
-          <b>Nome do Membro 6</b>
+          <b>Matheus Santana</b>
         </sub>
       </a>
     </td>
